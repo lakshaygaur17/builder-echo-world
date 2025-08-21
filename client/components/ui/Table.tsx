@@ -48,7 +48,7 @@ export function TableContainer({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 p-4 rounded-xl border border-datalab-grey-medium bg-white",
+        "flex flex-col gap-4 p-4 rounded-xl border border-datalab-grey-medium bg-white w-full",
         className,
       )}
       {...props}
