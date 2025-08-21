@@ -96,6 +96,10 @@ export function DashboardContent() {
     // Could save to local storage or send to server as draft
   };
 
+  const handleCampaignClick = (campaignName: string) => {
+    navigate(`/campaign/${campaignName}`);
+  };
+
   return (
     <PageContainer>
       {/* Page Header */}
