@@ -23,22 +23,22 @@ const cardVariants = {
   default: "bg-white",
   bordered: "bg-white border border-datalab-grey-medium",
   shadow: "bg-white shadow-lg",
-  elevated: "bg-white shadow-2xl"
+  elevated: "bg-white shadow-2xl",
 };
 
 const cardPadding = {
   none: "",
   sm: "p-3",
-  md: "p-4", 
-  lg: "p-6"
+  md: "p-4",
+  lg: "p-6",
 };
 
-export function Card({ 
-  children, 
-  variant = "default", 
+export function Card({
+  children,
+  variant = "default",
   padding = "md",
   className,
-  ...props 
+  ...props
 }: CardProps) {
   return (
     <div
@@ -46,7 +46,7 @@ export function Card({
         "rounded-lg",
         cardVariants[variant],
         cardPadding[padding],
-        className
+        className,
       )}
       {...props}
     >
@@ -57,13 +57,20 @@ export function Card({
 
 export function CardHeader({ children, className, ...props }: CardHeaderProps) {
   return (
-    <div className={cn("flex justify-between items-center", className)} {...props}>
+    <div
+      className={cn("flex justify-between items-center", className)}
+      {...props}
+    >
       {children}
     </div>
   );
 }
 
-export function CardContent({ children, className, ...props }: CardContentProps) {
+export function CardContent({
+  children,
+  className,
+  ...props
+}: CardContentProps) {
   return (
     <div className={cn("flex-1", className)} {...props}>
       {children}
@@ -73,7 +80,10 @@ export function CardContent({ children, className, ...props }: CardContentProps)
 
 export function CardFooter({ children, className, ...props }: CardFooterProps) {
   return (
-    <div className={cn("flex justify-end items-center gap-2", className)} {...props}>
+    <div
+      className={cn("flex justify-end items-center gap-2", className)}
+      {...props}
+    >
       {children}
     </div>
   );

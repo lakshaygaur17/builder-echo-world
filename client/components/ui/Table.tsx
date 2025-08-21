@@ -1,4 +1,9 @@
-import { ReactNode, HTMLAttributes, ThHTMLAttributes, TdHTMLAttributes } from "react";
+import {
+  ReactNode,
+  HTMLAttributes,
+  ThHTMLAttributes,
+  TdHTMLAttributes,
+} from "react";
 import { cn } from "../../lib/utils";
 
 interface TableProps extends HTMLAttributes<HTMLTableElement> {
@@ -33,29 +38,29 @@ interface TableContainerProps extends HTMLAttributes<HTMLDivElement> {
   actions?: ReactNode;
 }
 
-export function TableContainer({ 
-  children, 
-  title, 
-  actions, 
-  className, 
-  ...props 
+export function TableContainer({
+  children,
+  title,
+  actions,
+  className,
+  ...props
 }: TableContainerProps) {
   return (
-    <div 
+    <div
       className={cn(
         "flex flex-col gap-4 p-4 rounded-xl border border-datalab-grey-medium bg-white",
-        className
+        className,
       )}
       {...props}
     >
       {(title || actions) && (
         <div className="flex justify-between items-center">
           {title && (
-            <h3 className="text-datalab-grey-darkest font-medium text-lg">{title}</h3>
+            <h3 className="text-datalab-grey-darkest font-medium text-lg">
+              {title}
+            </h3>
           )}
-          {actions && (
-            <div className="flex items-center gap-2">{actions}</div>
-          )}
+          {actions && <div className="flex items-center gap-2">{actions}</div>}
         </div>
       )}
       {children}
@@ -66,17 +71,18 @@ export function TableContainer({
 export function Table({ children, className, ...props }: TableProps) {
   return (
     <div className="w-full overflow-x-auto">
-      <table 
-        className={cn("w-full border-collapse", className)} 
-        {...props}
-      >
+      <table className={cn("w-full border-collapse", className)} {...props}>
         {children}
       </table>
     </div>
   );
 }
 
-export function TableHeader({ children, className, ...props }: TableHeaderProps) {
+export function TableHeader({
+  children,
+  className,
+  ...props
+}: TableHeaderProps) {
   return (
     <thead className={cn("", className)} {...props}>
       {children}
@@ -92,19 +98,19 @@ export function TableBody({ children, className, ...props }: TableBodyProps) {
   );
 }
 
-export function TableRow({ 
-  children, 
-  hover = true, 
-  className, 
-  ...props 
+export function TableRow({
+  children,
+  hover = true,
+  className,
+  ...props
 }: TableRowProps) {
   return (
-    <tr 
+    <tr
       className={cn(
         "border border-datalab-grey-lightest bg-white",
         hover && "hover:bg-datalab-grey-light/50 transition-colors",
-        className
-      )} 
+        className,
+      )}
       {...props}
     >
       {children}
@@ -114,11 +120,11 @@ export function TableRow({
 
 export function TableHead({ children, className, ...props }: TableHeadProps) {
   return (
-    <th 
+    <th
       className={cn(
         "h-14 px-4 py-3 text-left text-datalab-grey-darker text-sm font-semibold border border-datalab-grey-lightest bg-white first:rounded-tl-lg last:rounded-tr-lg",
-        className
-      )} 
+        className,
+      )}
       {...props}
     >
       {children}
@@ -128,11 +134,11 @@ export function TableHead({ children, className, ...props }: TableHeadProps) {
 
 export function TableCell({ children, className, ...props }: TableCellProps) {
   return (
-    <td 
+    <td
       className={cn(
         "h-14 px-4 py-3 text-datalab-grey-darkest text-sm font-normal border border-datalab-grey-lightest",
-        className
-      )} 
+        className,
+      )}
       {...props}
     >
       {children}

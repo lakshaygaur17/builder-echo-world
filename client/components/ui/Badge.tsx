@@ -11,25 +11,26 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 const badgeVariants = {
   default: "bg-datalab-grey-lighter text-datalab-grey-darkest",
   success: "bg-datalab-green text-white",
-  warning: "bg-datalab-orange text-white", 
+  warning: "bg-datalab-orange text-white",
   danger: "bg-datalab-red text-white",
   info: "bg-datalab-primary text-datalab-primary-dark",
-  outline: "border border-datalab-grey-medium bg-white text-datalab-grey-darkest"
+  outline:
+    "border border-datalab-grey-medium bg-white text-datalab-grey-darkest",
 };
 
 const badgeSizes = {
   sm: "px-2 py-0.5 text-xs",
   md: "px-3 py-1 text-sm",
-  lg: "px-4 py-1.5 text-base"
+  lg: "px-4 py-1.5 text-base",
 };
 
-export function Badge({ 
-  children, 
-  variant = "default", 
+export function Badge({
+  children,
+  variant = "default",
   size = "sm",
   rounded = false,
   className,
-  ...props 
+  ...props
 }: BadgeProps) {
   return (
     <span
@@ -38,7 +39,7 @@ export function Badge({
         rounded ? "rounded-full" : "rounded",
         badgeVariants[variant],
         badgeSizes[size],
-        className
+        className,
       )}
       {...props}
     >
@@ -48,7 +49,7 @@ export function Badge({
 }
 
 // Specialized badge for campaign stages
-interface StageBadgeProps extends Omit<BadgeProps, 'variant'> {
+interface StageBadgeProps extends Omit<BadgeProps, "variant"> {
   stage: string;
 }
 

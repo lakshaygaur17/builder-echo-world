@@ -1,7 +1,15 @@
 import { Trash2 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Badge } from "./ui/Badge";
-import { Table, TableContainer, TableHeader, TableBody, TableRow, TableHead, TableCell } from "./ui/Table";
+import {
+  Table,
+  TableContainer,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "./ui/Table";
 import { FilterInput } from "./ui/Input";
 import { PageContainer, PageHeader, StatsGrid } from "./layout/PageHeader";
 
@@ -14,11 +22,36 @@ interface Campaign {
 
 export function DashboardContent() {
   const campaigns: Campaign[] = [
-    { name: "LTE3901", stage: "Metadata", lastModified: "08/08/2025", modifiedBy: "Skip" },
-    { name: "MT3876", stage: "LOLUPD(2P)", lastModified: "08/08/2025", modifiedBy: "Skip" },
-    { name: "M3991", stage: "1P Executed", lastModified: "08/08/2025", modifiedBy: "Skip" },
-    { name: "BOG4006", stage: "2P Executed", lastModified: "08/08/2025", modifiedBy: "Nick" },
-    { name: "LTH4007", stage: "Output Sent", lastModified: "08/08/2025", modifiedBy: "Nick" },
+    {
+      name: "LTE3901",
+      stage: "Metadata",
+      lastModified: "08/08/2025",
+      modifiedBy: "Skip",
+    },
+    {
+      name: "MT3876",
+      stage: "LOLUPD(2P)",
+      lastModified: "08/08/2025",
+      modifiedBy: "Skip",
+    },
+    {
+      name: "M3991",
+      stage: "1P Executed",
+      lastModified: "08/08/2025",
+      modifiedBy: "Skip",
+    },
+    {
+      name: "BOG4006",
+      stage: "2P Executed",
+      lastModified: "08/08/2025",
+      modifiedBy: "Nick",
+    },
+    {
+      name: "LTH4007",
+      stage: "Output Sent",
+      lastModified: "08/08/2025",
+      modifiedBy: "Nick",
+    },
   ];
 
   const stats = [
@@ -47,7 +80,14 @@ export function DashboardContent() {
               viewBox="0 0 32 32"
               fill="none"
             >
-              <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" stroke="#C6C6C6" />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="31"
+                height="31"
+                rx="3.5"
+                stroke="#C6C6C6"
+              />
               <path
                 d="M13.6667 9.26667H10.2667C9.66551 9.26667 9.08897 9.50548 8.66389 9.93056C8.23881 10.3556 8 10.9322 8 11.5333V21.7333C8 22.3345 8.23881 22.911 8.66389 23.3361C9.08897 23.7612 9.66551 24 10.2667 24H20.4667C21.0678 24 21.6444 23.7612 22.0694 23.3361C22.4945 22.911 22.7333 22.3345 22.7333 21.7333V18.3333M18.2 10.4C18.2 11.3017 18.5582 12.1665 19.1958 12.8042C19.8335 13.4418 20.6983 13.8 21.6 13.8C22.5017 13.8 23.3665 13.4418 24.0042 12.8042C24.6418 12.1665 25 11.3017 25 10.4C25 9.49826 24.6418 8.63346 24.0042 7.99584C23.3665 7.35821 22.5017 7 21.6 7C20.6983 7 19.8335 7.35821 19.1958 7.99584C18.5582 8.63346 18.2 9.49826 18.2 10.4Z"
                 stroke="#6B6B6B"
@@ -63,11 +103,8 @@ export function DashboardContent() {
       <div className="flex flex-col items-start gap-4 flex-1 w-full">
         {/* Filters and Actions */}
         <div className="flex justify-between items-center w-full">
-          <FilterInput 
-            filters={["LOLUPD (1P)", "Fresh"]}
-            className="flex-1"
-          />
-          
+          <FilterInput filters={["LOLUPD (1P)", "Fresh"]} className="flex-1" />
+
           <div className="flex items-center gap-3">
             <Button variant="success" size="lg">
               + New Campaign
@@ -79,7 +116,7 @@ export function DashboardContent() {
         <StatsGrid stats={stats} />
 
         {/* Campaigns Table */}
-        <TableContainer 
+        <TableContainer
           title="Campaigns List (5)"
           actions={
             <div className="flex items-center gap-2">

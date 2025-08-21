@@ -3,33 +3,42 @@ import { cn } from "../../lib/utils";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: "primary" | "secondary" | "success" | "danger" | "outline" | "ghost";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "outline"
+    | "ghost";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
 }
 
 const buttonVariants = {
-  primary: "bg-datalab-primary text-datalab-primary-dark hover:bg-datalab-primary/90",
-  secondary: "bg-datalab-grey-lighter text-datalab-grey-darkest hover:bg-datalab-grey-medium",
+  primary:
+    "bg-datalab-primary text-datalab-primary-dark hover:bg-datalab-primary/90",
+  secondary:
+    "bg-datalab-grey-lighter text-datalab-grey-darkest hover:bg-datalab-grey-medium",
   success: "bg-datalab-green text-white hover:bg-datalab-green-dark",
   danger: "bg-datalab-red text-white hover:bg-datalab-red/90",
-  outline: "border border-datalab-grey-medium bg-white text-datalab-grey-darkest hover:bg-datalab-grey-light",
-  ghost: "text-datalab-grey-darkest hover:bg-datalab-grey-light"
+  outline:
+    "border border-datalab-grey-medium bg-white text-datalab-grey-darkest hover:bg-datalab-grey-light",
+  ghost: "text-datalab-grey-darkest hover:bg-datalab-grey-light",
 };
 
 const buttonSizes = {
   sm: "h-8 px-3 text-xs",
   md: "h-10 px-4 text-sm",
-  lg: "h-11 px-6 text-base"
+  lg: "h-11 px-6 text-base",
 };
 
-export function Button({ 
-  children, 
-  variant = "primary", 
-  size = "md", 
+export function Button({
+  children,
+  variant = "primary",
+  size = "md",
   fullWidth = false,
   className,
-  ...props 
+  ...props
 }: ButtonProps) {
   return (
     <button
@@ -38,7 +47,7 @@ export function Button({
         buttonVariants[variant],
         buttonSizes[size],
         fullWidth && "w-full",
-        className
+        className,
       )}
       {...props}
     >
