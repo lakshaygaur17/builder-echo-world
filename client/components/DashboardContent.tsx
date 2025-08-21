@@ -179,7 +179,7 @@ export function DashboardContent() {
                   <TableCell>
                     <button
                       onClick={() => handleCampaignClick(campaign.name)}
-                      className="text-datalab-primary hover:text-datalab-primary-dark hover:underline font-medium"
+                      className="text-blue-600 hover:text-blue-800 hover:underline font-medium"
                     >
                       {campaign.name}
                     </button>
