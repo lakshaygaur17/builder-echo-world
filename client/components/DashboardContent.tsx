@@ -132,7 +132,11 @@ export function DashboardContent() {
           <FilterInput filters={["LOLUPD (1P)", "Fresh"]} className="flex-1" />
 
           <div className="flex items-center gap-3">
-            <Button variant="success" size="lg">
+            <Button
+              variant="success"
+              size="lg"
+              onClick={() => setIsNewCampaignModalOpen(true)}
+            >
               + New Campaign
             </Button>
           </div>
