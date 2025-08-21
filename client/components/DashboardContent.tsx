@@ -194,6 +194,13 @@ export function DashboardContent() {
           </Table>
         </TableContainer>
       </div>
+
+      <NewCampaignModal
+        isOpen={isNewCampaignModalOpen}
+        onClose={() => setIsNewCampaignModalOpen(false)}
+        onSubmit={handleNewCampaign}
+        onSaveDraft={handleSaveDraft}
+      />
     </PageContainer>
   );
 }
