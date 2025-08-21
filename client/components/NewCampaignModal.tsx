@@ -71,6 +71,9 @@ export function NewCampaignModal({
         prefix: selectedPrefix,
         planName: planName.trim()
       });
+
+      // Navigate to the campaign detail page
+      navigate(`/campaign/${planName.trim()}`);
       handleClose();
     }
   };
