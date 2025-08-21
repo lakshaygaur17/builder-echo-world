@@ -176,7 +176,14 @@ export function DashboardContent() {
             <TableBody>
               {campaigns.map((campaign, index) => (
                 <TableRow key={index}>
-                  <TableCell>{campaign.name}</TableCell>
+                  <TableCell>
+                    <button
+                      onClick={() => handleCampaignClick(campaign.name)}
+                      className="text-datalab-primary hover:text-datalab-primary-dark hover:underline font-medium"
+                    >
+                      {campaign.name}
+                    </button>
+                  </TableCell>
                   <TableCell>
                     <Badge variant="default" rounded>
                       {campaign.stage}
