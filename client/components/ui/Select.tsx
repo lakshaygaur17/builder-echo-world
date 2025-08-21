@@ -29,7 +29,7 @@ export function Select({
   error,
   label,
   fullWidth = false,
-  className
+  className,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,10 @@ export function Select({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -46,7 +49,7 @@ export function Select({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const selectedOption = options.find(option => option.value === value);
+  const selectedOption = options.find((option) => option.value === value);
 
   const handleOptionClick = (optionValue: string) => {
     onValueChange(optionValue);
@@ -71,7 +74,7 @@ export function Select({
           {label}
         </label>
       )}
-      
+
       <div ref={containerRef} className="relative">
         <button
           type="button"
@@ -82,22 +85,26 @@ export function Select({
             "flex h-10 w-full items-center justify-between rounded-lg border px-3 py-2 text-sm bg-white",
             "focus:outline-none focus:ring-2 focus:ring-datalab-primary focus:border-transparent",
             "disabled:opacity-50 disabled:cursor-not-allowed",
-            error 
-              ? "border-datalab-red focus:ring-datalab-red" 
+            error
+              ? "border-datalab-red focus:ring-datalab-red"
               : "border-datalab-grey-medium",
-            isOpen && "border-datalab-primary ring-2 ring-datalab-primary"
+            isOpen && "border-datalab-primary ring-2 ring-datalab-primary",
           )}
         >
-          <span className={cn(
-            selectedOption ? "text-datalab-grey-darkest" : "text-datalab-grey-dark"
-          )}>
+          <span
+            className={cn(
+              selectedOption
+                ? "text-datalab-grey-darkest"
+                : "text-datalab-grey-dark",
+            )}
+          >
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          <ChevronDown 
+          <ChevronDown
             className={cn(
               "h-4 w-4 transition-transform text-datalab-grey-dark",
-              isOpen && "rotate-180"
-            )} 
+              isOpen && "rotate-180",
+            )}
           />
         </button>
 
@@ -113,13 +120,16 @@ export function Select({
                 <button
                   key={option.value}
                   type="button"
-                  onClick={() => !option.disabled && handleOptionClick(option.value)}
+                  onClick={() =>
+                    !option.disabled && handleOptionClick(option.value)
+                  }
                   disabled={option.disabled}
                   className={cn(
                     "flex w-full items-center justify-between px-3 py-2 text-sm text-left",
                     "hover:bg-datalab-grey-light focus:bg-datalab-grey-light focus:outline-none",
                     "disabled:opacity-50 disabled:cursor-not-allowed",
-                    value === option.value && "bg-datalab-primary/10 text-datalab-primary-dark font-medium"
+                    value === option.value &&
+                      "bg-datalab-primary/10 text-datalab-primary-dark font-medium",
                   )}
                 >
                   <span>{option.label}</span>
@@ -133,9 +143,7 @@ export function Select({
         )}
       </div>
 
-      {error && (
-        <p className="mt-1 text-xs text-datalab-red">{error}</p>
-      )}
+      {error && <p className="mt-1 text-xs text-datalab-red">{error}</p>}
     </div>
   );
 }
@@ -149,12 +157,12 @@ interface SimpleSelectProps {
   className?: string;
 }
 
-export function SimpleSelect({ 
-  children, 
-  value, 
-  onValueChange, 
+export function SimpleSelect({
+  children,
+  value,
+  onValueChange,
   placeholder,
-  className 
+  className,
 }: SimpleSelectProps) {
   return (
     <select
@@ -164,7 +172,7 @@ export function SimpleSelect({
         "flex h-10 w-full rounded-lg border border-datalab-grey-medium px-3 py-2 text-sm bg-white",
         "focus:outline-none focus:ring-2 focus:ring-datalab-primary focus:border-transparent",
         "disabled:opacity-50 disabled:cursor-not-allowed",
-        className
+        className,
       )}
     >
       {placeholder && (

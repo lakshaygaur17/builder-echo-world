@@ -12,7 +12,9 @@ interface CampaignDetailProps {
   campaignId?: string;
 }
 
-export default function CampaignDetail({ campaignId: propCampaignId }: CampaignDetailProps = {}) {
+export default function CampaignDetail({
+  campaignId: propCampaignId,
+}: CampaignDetailProps = {}) {
   const params = useParams();
   const navigate = useNavigate();
   const campaignId = propCampaignId || params.id || "BOG5101";
@@ -37,7 +39,7 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
     { value: "BOG", label: "BOG" },
     { value: "MT", label: "MT" },
     { value: "M", label: "M" },
-    { value: "LTE", label: "LTE" }
+    { value: "LTE", label: "LTE" },
   ];
 
   const yearOptions = Array.from({ length: 10 }, (_, i) => {
@@ -57,43 +59,43 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
     { value: "SEP", label: "SEP" },
     { value: "OCT", label: "OCT" },
     { value: "NOV", label: "NOV" },
-    { value: "DEC", label: "DEC" }
+    { value: "DEC", label: "DEC" },
   ];
 
   const productLineOptions = [
     { value: "Book", label: "Book" },
     { value: "Magazine", label: "Magazine" },
-    { value: "Digital", label: "Digital" }
+    { value: "Digital", label: "Digital" },
   ];
 
   const entityOptions = [
     { value: "US", label: "US" },
     { value: "CA", label: "CA" },
-    { value: "UK", label: "UK" }
+    { value: "UK", label: "UK" },
   ];
 
   const costCenterOptions = [
     { value: "BEST OF RD - DG", label: "BEST OF RD - DG" },
     { value: "PREMIUM - DG", label: "PREMIUM - DG" },
-    { value: "STANDARD - DG", label: "STANDARD - DG" }
+    { value: "STANDARD - DG", label: "STANDARD - DG" },
   ];
 
   const sourceOptions = [
     { value: "D - Direct Mail", label: "D - Direct Mail" },
     { value: "E - Email", label: "E - Email" },
-    { value: "W - Web", label: "W - Web" }
+    { value: "W - Web", label: "W - Web" },
   ];
 
   const subChannelOptions = [
     { value: "F - BOUNCEBACK, CHEC...", label: "F - BOUNCEBACK, CHEC..." },
     { value: "G - ACQUISITION", label: "G - ACQUISITION" },
-    { value: "H - RENEWAL", label: "H - RENEWAL" }
+    { value: "H - RENEWAL", label: "H - RENEWAL" },
   ];
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -120,10 +122,17 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
           {/* Header */}
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center gap-3">
-              <Button variant="ghost" size="sm" onClick={handleBack} className="p-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleBack}
+                className="p-2"
+              >
                 <ArrowLeft className="w-4 h-4" />
               </Button>
-              <h1 className="text-datalab-grey-darkest font-medium text-2xl">{campaignId}</h1>
+              <h1 className="text-datalab-grey-darkest font-medium text-2xl">
+                {campaignId}
+              </h1>
             </div>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" className="p-2">
@@ -150,7 +159,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
             {activeTab === "metadata" && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-lg font-medium text-datalab-grey-darkest mb-2">Metadata</h2>
+                  <h2 className="text-lg font-medium text-datalab-grey-darkest mb-2">
+                    Metadata
+                  </h2>
                   <p className="text-sm text-datalab-grey-dark mb-6">
                     Once Metadata is saved, the Plan Name cannot be edited
                   </p>
@@ -161,7 +172,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Plan Name Prefix*"
                     options={prefixOptions}
                     value={formData.planNamePrefix}
-                    onValueChange={(value) => handleInputChange("planNamePrefix", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("planNamePrefix", value)
+                    }
                     fullWidth
                   />
 
@@ -169,7 +182,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Issue year*"
                     options={yearOptions}
                     value={formData.issueYear}
-                    onValueChange={(value) => handleInputChange("issueYear", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("issueYear", value)
+                    }
                     fullWidth
                   />
 
@@ -177,28 +192,36 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Issue month*"
                     options={monthOptions}
                     value={formData.issueMonth}
-                    onValueChange={(value) => handleInputChange("issueMonth", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("issueMonth", value)
+                    }
                     fullWidth
                   />
 
                   <DateInput
                     label="Mail date*"
                     value={formData.mailDate}
-                    onChange={(e) => handleInputChange("mailDate", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("mailDate", e.target.value)
+                    }
                     fullWidth
                   />
 
                   <DateInput
                     label="Selection date*"
                     value={formData.selectionDate}
-                    onChange={(e) => handleInputChange("selectionDate", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("selectionDate", e.target.value)
+                    }
                     fullWidth
                   />
 
                   <DateInput
                     label="Execution date*"
                     value={formData.executionDate}
-                    onChange={(e) => handleInputChange("executionDate", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("executionDate", e.target.value)
+                    }
                     fullWidth
                   />
                 </div>
@@ -210,7 +233,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     </label>
                     <textarea
                       value={formData.description}
-                      onChange={(e) => handleInputChange("description", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("description", e.target.value)
+                      }
                       placeholder="Type here"
                       rows={4}
                       className="flex w-full px-3 py-2 text-sm bg-white border border-datalab-grey-medium rounded-lg placeholder:text-datalab-grey-dark focus:outline-none focus:ring-2 focus:ring-datalab-primary focus:border-transparent resize-none"
@@ -223,7 +248,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Product line*"
                     options={productLineOptions}
                     value={formData.productLine}
-                    onValueChange={(value) => handleInputChange("productLine", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("productLine", value)
+                    }
                     fullWidth
                   />
 
@@ -231,7 +258,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Entity*"
                     options={entityOptions}
                     value={formData.entity}
-                    onValueChange={(value) => handleInputChange("entity", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("entity", value)
+                    }
                     fullWidth
                   />
 
@@ -239,7 +268,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Book cost center*"
                     options={costCenterOptions}
                     value={formData.bookCostCenter}
-                    onValueChange={(value) => handleInputChange("bookCostCenter", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("bookCostCenter", value)
+                    }
                     fullWidth
                   />
 
@@ -247,7 +278,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Source*"
                     options={sourceOptions}
                     value={formData.source}
-                    onValueChange={(value) => handleInputChange("source", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("source", value)
+                    }
                     fullWidth
                   />
 
@@ -255,7 +288,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
                     label="Book sub channel*"
                     options={subChannelOptions}
                     value={formData.bookSubChannel}
-                    onValueChange={(value) => handleInputChange("bookSubChannel", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("bookSubChannel", value)
+                    }
                     fullWidth
                   />
                 </div>
@@ -264,7 +299,9 @@ export default function CampaignDetail({ campaignId: propCampaignId }: CampaignD
 
             {activeTab !== "metadata" && (
               <div className="flex items-center justify-center h-64">
-                <p className="text-datalab-grey-dark">Content for {activeTab} tab coming soon...</p>
+                <p className="text-datalab-grey-dark">
+                  Content for {activeTab} tab coming soon...
+                </p>
               </div>
             )}
           </div>

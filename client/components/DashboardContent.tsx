@@ -87,7 +87,7 @@ export function DashboardContent() {
       modifiedBy: "User",
     };
 
-    setCampaigns(prev => [...prev, newCampaign]);
+    setCampaigns((prev) => [...prev, newCampaign]);
     console.log("New campaign created:", data);
   };
 

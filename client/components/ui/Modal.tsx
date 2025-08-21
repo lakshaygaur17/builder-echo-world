@@ -28,9 +28,9 @@ interface ModalFooterProps {
 
 const modalSizes = {
   sm: "max-w-md",
-  md: "max-w-lg", 
+  md: "max-w-lg",
   lg: "max-w-2xl",
-  xl: "max-w-4xl"
+  xl: "max-w-4xl",
 };
 
 export function Modal({ isOpen, onClose, children, size = "md" }: ModalProps) {
@@ -59,31 +59,34 @@ export function Modal({ isOpen, onClose, children, size = "md" }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-      />
-      
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+
       {/* Modal */}
-      <div className={cn(
-        "relative bg-white rounded-lg shadow-2xl w-full mx-4",
-        modalSizes[size]
-      )}>
+      <div
+        className={cn(
+          "relative bg-white rounded-lg shadow-2xl w-full mx-4",
+          modalSizes[size],
+        )}
+      >
         {children}
       </div>
     </div>
   );
 }
 
-export function ModalHeader({ children, onClose, className }: ModalHeaderProps) {
+export function ModalHeader({
+  children,
+  onClose,
+  className,
+}: ModalHeaderProps) {
   return (
-    <div className={cn(
-      "flex items-center justify-between p-6 border-b border-datalab-grey-lightest",
-      className
-    )}>
-      <div className="flex-1">
-        {children}
-      </div>
+    <div
+      className={cn(
+        "flex items-center justify-between p-6 border-b border-datalab-grey-lightest",
+        className,
+      )}
+    >
+      <div className="flex-1">{children}</div>
       {onClose && (
         <Button
           variant="ghost"
@@ -99,19 +102,17 @@ export function ModalHeader({ children, onClose, className }: ModalHeaderProps) 
 }
 
 export function ModalContent({ children, className }: ModalContentProps) {
-  return (
-    <div className={cn("p-6", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("p-6", className)}>{children}</div>;
 }
 
 export function ModalFooter({ children, className }: ModalFooterProps) {
   return (
-    <div className={cn(
-      "flex items-center justify-end gap-3 p-6 border-t border-datalab-grey-lightest",
-      className
-    )}>
+    <div
+      className={cn(
+        "flex items-center justify-end gap-3 p-6 border-t border-datalab-grey-lightest",
+        className,
+      )}
+    >
       {children}
     </div>
   );

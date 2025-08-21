@@ -35,28 +35,35 @@ interface TabsContentProps {
 
 export function Tabs({ children, value, onValueChange, className }: TabsProps) {
   return (
-    <TabsContext.Provider value={{ activeTab: value, onTabChange: onValueChange }}>
-      <div className={cn("w-full", className)}>
-        {children}
-      </div>
+    <TabsContext.Provider
+      value={{ activeTab: value, onTabChange: onValueChange }}
+    >
+      <div className={cn("w-full", className)}>{children}</div>
     </TabsContext.Provider>
   );
 }
 
 export function TabsList({ children, className }: TabsListProps) {
   return (
-    <div className={cn(
-      "inline-flex h-10 items-center justify-center rounded-lg bg-datalab-grey-light p-1",
-      className
-    )}>
+    <div
+      className={cn(
+        "inline-flex h-10 items-center justify-center rounded-lg bg-datalab-grey-light p-1",
+        className,
+      )}
+    >
       {children}
     </div>
   );
 }
 
-export function TabsTrigger({ children, value, disabled = false, className }: TabsTriggerProps) {
+export function TabsTrigger({
+  children,
+  value,
+  disabled = false,
+  className,
+}: TabsTriggerProps) {
   const context = useContext(TabsContext);
-  
+
   if (!context) {
     throw new Error("TabsTrigger must be used within a Tabs component");
   }
@@ -73,10 +80,10 @@ export function TabsTrigger({ children, value, disabled = false, className }: Ta
         "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
-        isActive 
-          ? "bg-datalab-grey-darkest text-datalab-brand-white shadow-sm" 
+        isActive
+          ? "bg-datalab-grey-darkest text-datalab-brand-white shadow-sm"
           : "text-datalab-grey-dark hover:bg-datalab-grey-lighter hover:text-datalab-grey-darkest",
-        className
+        className,
       )}
     >
       {children}
@@ -86,7 +93,7 @@ export function TabsTrigger({ children, value, disabled = false, className }: Ta
 
 export function TabsContent({ children, value, className }: TabsContentProps) {
   const context = useContext(TabsContext);
-  
+
   if (!context) {
     throw new Error("TabsContent must be used within a Tabs component");
   }
@@ -98,10 +105,12 @@ export function TabsContent({ children, value, className }: TabsContentProps) {
   }
 
   return (
-    <div className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}>
+    <div
+      className={cn(
+        "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -122,25 +131,37 @@ interface HorizontalTabProps {
   className?: string;
 }
 
-export function HorizontalTabs({ children, value, onValueChange, className }: HorizontalTabsProps) {
+export function HorizontalTabs({
+  children,
+  value,
+  onValueChange,
+  className,
+}: HorizontalTabsProps) {
   return (
-    <TabsContext.Provider value={{ activeTab: value, onTabChange: onValueChange }}>
+    <TabsContext.Provider
+      value={{ activeTab: value, onTabChange: onValueChange }}
+    >
       <div className={cn("w-full", className)}>
         <div className="border-b border-datalab-grey-lightest">
-          <div className="flex space-x-8">
-            {children}
-          </div>
+          <div className="flex space-x-8">{children}</div>
         </div>
       </div>
     </TabsContext.Provider>
   );
 }
 
-export function HorizontalTab({ children, value, disabled = false, className }: HorizontalTabProps) {
+export function HorizontalTab({
+  children,
+  value,
+  disabled = false,
+  className,
+}: HorizontalTabProps) {
   const context = useContext(TabsContext);
-  
+
   if (!context) {
-    throw new Error("HorizontalTab must be used within a HorizontalTabs component");
+    throw new Error(
+      "HorizontalTab must be used within a HorizontalTabs component",
+    );
   }
 
   const { activeTab, onTabChange } = context;
@@ -158,7 +179,7 @@ export function HorizontalTab({ children, value, disabled = false, className }: 
         isActive
           ? "border-datalab-grey-darkest text-datalab-grey-darkest bg-datalab-grey-darkest text-white px-4 rounded-t-md"
           : "border-transparent text-datalab-grey-dark hover:text-datalab-grey-darkest hover:border-datalab-grey-medium bg-datalab-grey-lighter px-4 rounded-t-md",
-        className
+        className,
       )}
     >
       {children}

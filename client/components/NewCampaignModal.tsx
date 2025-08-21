@@ -21,19 +21,21 @@ const prefixOptions = [
   { value: "BOG", label: "BOG" },
   { value: "MT", label: "MT" },
   { value: "M", label: "M" },
-  { value: "LTE", label: "LTE" }
+  { value: "LTE", label: "LTE" },
 ];
 
 export function NewCampaignModal({
   isOpen,
   onClose,
   onSubmit,
-  onSaveDraft
+  onSaveDraft,
 }: NewCampaignModalProps) {
   const navigate = useNavigate();
   const [selectedPrefix, setSelectedPrefix] = useState<string>("");
   const [planName, setPlanName] = useState<string>("");
-  const [errors, setErrors] = useState<{ prefix?: string; planName?: string }>({});
+  const [errors, setErrors] = useState<{ prefix?: string; planName?: string }>(
+    {},
+  );
 
   // Auto-generate plan name when prefix is selected
   useEffect(() => {
@@ -42,9 +44,13 @@ export function NewCampaignModal({
       const randomNumber = Math.floor(1000 + Math.random() * 9000);
       const generatedName = `${selectedPrefix}${randomNumber}`;
       setPlanName(generatedName);
-      
+
       // Clear any previous errors
-      setErrors(prev => ({ ...prev, prefix: undefined, planName: undefined }));
+      setErrors((prev) => ({
+        ...prev,
+        prefix: undefined,
+        planName: undefined,
+      }));
     } else {
       setPlanName("");
     }
@@ -52,15 +58,15 @@ export function NewCampaignModal({
 
   const validateForm = () => {
     const newErrors: { prefix?: string; planName?: string } = {};
-    
+
     if (!selectedPrefix) {
       newErrors.prefix = "Please select a prefix";
     }
-    
+
     if (!planName.trim()) {
       newErrors.planName = "Plan name is required";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -69,7 +75,7 @@ export function NewCampaignModal({
     if (validateForm()) {
       onSubmit({
         prefix: selectedPrefix,
-        planName: planName.trim()
+        planName: planName.trim(),
       });
 
       // Navigate to the campaign detail page
@@ -82,7 +88,7 @@ export function NewCampaignModal({
     // Save draft doesn't require full validation
     onSaveDraft({
       prefix: selectedPrefix,
-      planName: planName.trim()
+      planName: planName.trim(),
     });
     handleClose();
   };
@@ -108,7 +114,8 @@ export function NewCampaignModal({
       <ModalContent>
         <div className="space-y-6">
           <p className="text-sm text-datalab-grey-dark">
-            Please select Plan Name Prefix to generate Plan Name and create Campaign.
+            Please select Plan Name Prefix to generate Plan Name and create
+            Campaign.
           </p>
 
           <div className="space-y-4">
@@ -126,7 +133,11 @@ export function NewCampaignModal({
               label="Plan Name"
               value={planName}
               onChange={(e) => setPlanName(e.target.value)}
-              placeholder={selectedPrefix ? "Plan name will be generated" : "Please select prefix to generate"}
+              placeholder={
+                selectedPrefix
+                  ? "Plan name will be generated"
+                  : "Please select prefix to generate"
+              }
               error={errors.planName}
               fullWidth
               disabled={!selectedPrefix}
