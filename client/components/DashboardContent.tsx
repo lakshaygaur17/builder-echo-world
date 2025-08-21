@@ -29,6 +29,7 @@ interface NewCampaignData {
 }
 
 export function DashboardContent() {
+  const navigate = useNavigate();
   const [isNewCampaignModalOpen, setIsNewCampaignModalOpen] = useState(false);
   const [campaigns, setCampaigns] = useState<Campaign[]>([
     {
