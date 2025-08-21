@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Trash2 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Badge } from "./ui/Badge";
@@ -12,6 +13,7 @@ import {
 } from "./ui/Table";
 import { FilterInput } from "./ui/Input";
 import { PageContainer, PageHeader, StatsGrid } from "./layout/PageHeader";
+import { NewCampaignModal } from "./NewCampaignModal";
 
 interface Campaign {
   name: string;
