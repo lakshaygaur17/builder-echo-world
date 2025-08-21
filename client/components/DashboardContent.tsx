@@ -76,6 +76,24 @@ export function DashboardContent() {
     console.log(`Delete campaign: ${campaignName}`);
   };
 
+  const handleNewCampaign = (data: NewCampaignData) => {
+    // Add the new campaign to the list
+    const newCampaign: Campaign = {
+      name: data.planName,
+      stage: "Metadata",
+      lastModified: new Date().toLocaleDateString("en-US"),
+      modifiedBy: "User",
+    };
+
+    setCampaigns(prev => [...prev, newCampaign]);
+    console.log("New campaign created:", data);
+  };
+
+  const handleSaveDraft = (data: NewCampaignData) => {
+    console.log("Campaign saved as draft:", data);
+    // Could save to local storage or send to server as draft
+  };
+
   return (
     <PageContainer>
       {/* Page Header */}
