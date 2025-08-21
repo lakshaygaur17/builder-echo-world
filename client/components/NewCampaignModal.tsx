@@ -24,12 +24,13 @@ const prefixOptions = [
   { value: "LTE", label: "LTE" }
 ];
 
-export function NewCampaignModal({ 
-  isOpen, 
-  onClose, 
-  onSubmit, 
-  onSaveDraft 
+export function NewCampaignModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  onSaveDraft
 }: NewCampaignModalProps) {
+  const navigate = useNavigate();
   const [selectedPrefix, setSelectedPrefix] = useState<string>("");
   const [planName, setPlanName] = useState<string>("");
   const [errors, setErrors] = useState<{ prefix?: string; planName?: string }>({});
