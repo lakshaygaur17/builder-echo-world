@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { Search } from "lucide-react";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
