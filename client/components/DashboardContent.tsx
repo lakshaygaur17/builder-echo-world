@@ -22,8 +22,14 @@ interface Campaign {
   modifiedBy: string;
 }
 
+interface NewCampaignData {
+  prefix: string;
+  planName: string;
+}
+
 export function DashboardContent() {
-  const campaigns: Campaign[] = [
+  const [isNewCampaignModalOpen, setIsNewCampaignModalOpen] = useState(false);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([
     {
       name: "LTE3901",
       stage: "Metadata",
@@ -54,7 +60,7 @@ export function DashboardContent() {
       lastModified: "08/08/2025",
       modifiedBy: "Nick",
     },
-  ];
+  ]);
 
   const stats = [
     { title: "Total Campaigns", value: "5", color: "default" as const },
