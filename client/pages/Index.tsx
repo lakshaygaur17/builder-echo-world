@@ -1,11 +1,10 @@
-import { Sidebar } from "../components/Sidebar";
+import { DashboardLayout } from "../components/layout/DashboardLayout";
 import { DashboardContent } from "../components/DashboardContent";
 
 export default function Index() {
   return (
-    <div className="flex w-full h-screen bg-datalab-grey-light">
-      <Sidebar />
+    <DashboardLayout>
       <DashboardContent />
-    </div>
+    </DashboardLayout>
   );
 }
